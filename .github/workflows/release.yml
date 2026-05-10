@@ -22,12 +22,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 校验 Tag 指向 main 分支提交
+      - name: 校验 Tag 指向 dev 分支提交
         run: |
           set -euo pipefail
-          git fetch origin main --no-tags
-          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
-            echo "❌ 当前 tag (${GITHUB_REF_NAME}) 对应提交不在 main 分支上"
+          git fetch origin dev --no-tags
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/dev; then
+            echo "❌ 当前 tag (${GITHUB_REF_NAME}) 对应提交不在 dev 分支上"
             exit 1
           fi
           echo "✅ Tag 来源校验通过"
