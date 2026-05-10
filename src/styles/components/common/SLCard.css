@@ -1,327 +1,216 @@
-/* SLCard 统一卡片样式 */
+/* ============================================
+   SLCard — Material Design 3 卡片样式
+   变体: elevated / filled / outlined / glass
+   ============================================ */
 
-/* 设置卡片公共样式 */
-.sl-settings-card {
+.sl-card {
   display: flex;
   flex-direction: column;
-}
-
-.sl-settings-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.sl-setting-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--sl-space-md) 0;
-  border-bottom: 1px solid var(--sl-border-light);
-  gap: var(--sl-space-lg);
-}
-
-.sl-setting-row:last-child {
-  border-bottom: none;
-}
-
-.sl-setting-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.sl-setting-label {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--sl-text-primary);
-}
-
-.sl-setting-desc {
-  font-size: 0.8125rem;
-  color: var(--sl-text-tertiary);
-  line-height: 1.4;
-}
-
-/* 输入框宽度预设 */
-.sl-input-sm {
-  width: 120px;
-  flex-shrink: 0;
-}
-
-.sl-input-md {
-  width: 200px;
-  flex-shrink: 0;
-}
-
-.sl-input-lg {
-  width: 320px;
-  flex-shrink: 0;
-}
-
-/* 服务器卡片样式 */
-.sl-server-card {
-  padding: var(--sl-space-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sl-space-md);
-  border-radius: var(--sl-radius-lg);
-  transition: all 0.3s ease;
+  border-radius: var(--md-sys-shape-corner-medium);
   position: relative;
   overflow: hidden;
+  transition:
+    box-shadow var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard),
+    transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated),
+    border-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
 }
 
-.sl-server-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--sl-shadow-lg);
-  border-color: var(--sl-primary-light);
+/* ===== MD3 Elevated Card ===== */
+.sl-card--elevated {
+  background: var(--md-sys-color-surface-container-low);
+  border: none;
+  box-shadow: var(--md-sys-elevation-level-1);
 }
 
-.sl-server-card::before {
+[data-theme="dark"] .sl-card--elevated {
+  background: var(--md-sys-color-surface-container-low);
+  box-shadow: var(--md-sys-elevation-level-1);
+}
+
+.sl-card--elevated.sl-card--hoverable:hover {
+  box-shadow: var(--md-sys-elevation-level-2);
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--md-sys-color-surface-container-low) 95%, var(--md-sys-color-primary));
+}
+
+.sl-card--elevated.sl-card--hoverable:active {
+  box-shadow: var(--md-sys-elevation-level-1);
+  transform: translateY(0);
+}
+
+/* ===== MD3 Filled Card (原 solid) ===== */
+.sl-card--filled {
+  background: var(--md-sys-color-surface-container-highest);
+  border: none;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .sl-card--filled {
+  background: var(--md-sys-color-surface-container-highest);
+}
+
+.sl-card--filled.sl-card--hoverable:hover {
+  background: color-mix(in srgb, var(--md-sys-color-surface-container-highest) 90%, var(--md-sys-color-primary));
+  box-shadow: var(--md-sys-elevation-level-1);
+  transform: translateY(-1px);
+}
+
+.sl-card--filled.sl-card--hoverable:active {
+  transform: translateY(0);
+}
+
+/* ===== MD3 Outlined Card (原 outline) ===== */
+.sl-card--outlined {
+  background: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .sl-card--outlined {
+  background: var(--md-sys-color-surface);
+  border-color: var(--md-sys-color-outline-variant);
+}
+
+.sl-card--outlined.sl-card--hoverable:hover {
+  border-color: var(--md-sys-color-outline);
+  background: color-mix(in srgb, var(--md-sys-color-primary) 4%, var(--md-sys-color-surface));
+  transform: translateY(-1px);
+}
+
+.sl-card--outlined.sl-card--hoverable:active {
+  transform: translateY(0);
+}
+
+/* ===== Glass Card (保留用于亚克力模式) ===== */
+.sl-card--glass {
+  background: var(--sl-glass-bg, color-mix(in srgb, var(--md-sys-color-surface) 72%, transparent));
+  backdrop-filter: blur(var(--sl-blur-md)) saturate(var(--sl-saturate-normal));
+  -webkit-backdrop-filter: blur(var(--sl-blur-md)) saturate(var(--sl-saturate-normal));
+  border: 1px solid var(--sl-glass-border, color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent));
+  box-shadow: var(--md-sys-elevation-level-1);
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.sl-card--glass.sl-card--hoverable:hover {
+  box-shadow: var(--md-sys-elevation-level-3);
+  transform: translateY(-2px);
+  border-color: var(--md-sys-color-primary);
+}
+
+.sl-card--glass.sl-card--hoverable:active {
+  box-shadow: var(--md-sys-elevation-level-1);
+  transform: translateY(0);
+}
+
+/* ===== Surface Tint (MD3) ===== */
+.sl-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sl-primary), var(--sl-secondary));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  inset: 0;
+  background: var(--md-sys-color-primary);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
-.sl-server-card:hover::before {
-  transform: scaleX(1);
+.sl-card--hoverable:hover::before {
+  opacity: 0.05;
 }
 
-/* 统计卡片样式 */
-.sl-stats-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.sl-stats-card-header {
+/* ===== 头部 ===== */
+.sl-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  margin-bottom: var(--sl-space-sm);
-}
-
-.sl-stats-card-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--sl-text-primary);
-}
-
-/* 快速启动卡片样式 */
-.sl-quick-start-card {
-  display: flex;
-  flex-direction: column;
-  height: 280px;
-}
-
-.sl-quick-actions {
-  display: flex;
-  gap: var(--sl-space-sm);
-  margin-top: var(--sl-space-sm);
   flex-wrap: wrap;
-}
-
-.sl-card-spacer {
-  flex-grow: 1;
-}
-
-/* 引用显示样式 */
-.sl-quote-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: var(--sl-space-xs) var(--sl-space-sm);
-  margin-top: var(--sl-space-xs);
-  border-top: 1px solid var(--sl-border-light);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: var(--sl-radius-sm);
-  position: relative;
-  overflow: hidden;
-}
-
-.sl-quote-display:hover {
-  opacity: 0.9;
-  background: var(--sl-bg-secondary);
-  transform: translateY(-1px);
-  box-shadow: var(--sl-shadow-sm);
-}
-
-.sl-quote-text {
-  font-size: 0.875rem;
-  color: var(--sl-text-secondary);
-  font-style: italic;
-  text-align: center;
-  transition: all 0.3s ease;
-  opacity: 1;
-}
-
-.sl-quote-text.fading {
-  opacity: 0;
-  transform: translateY(5px);
-}
-
-.sl-quote-author {
-  font-size: 0.75rem;
-  color: var(--sl-text-tertiary);
-  transition: all 0.3s ease;
-  opacity: 1;
-}
-
-.sl-quote-author.fading {
-  opacity: 0;
-  transform: translateY(5px);
-}
-
-.sl-quote-loading {
-  font-size: 0.875rem;
-  color: var(--sl-text-tertiary);
-  font-style: italic;
-  animation: quoteLoading 1.5s ease-in-out infinite;
-}
-
-@keyframes quoteLoading {
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* 滑块控制样式 */
-.sl-slider-control {
-  display: flex;
-  align-items: center;
-  gap: var(--sl-space-md);
-  min-width: 200px;
-}
-
-.sl-slider {
-  flex: 1;
-  height: 6px;
-  border-radius: var(--sl-radius-full);
-  background: var(--sl-border);
-  outline: none;
-  -webkit-appearance: none;
-}
-
-.sl-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--sl-primary);
-  cursor: pointer;
-  transition: all var(--sl-transition-fast);
-}
-
-.sl-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 0 4px var(--sl-primary-bg);
-}
-
-.sl-slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--sl-primary);
-  cursor: pointer;
-  border: none;
-  transition: all var(--sl-transition-fast);
-}
-
-.sl-slider::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 0 4px var(--sl-primary-bg);
-}
-
-.sl-slider-value {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--sl-text-primary);
-  min-width: 50px;
-  text-align: right;
-}
-
-/* 视图切换按钮 */
-.sl-view-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: var(--sl-bg-tertiary);
-  border: 1px solid var(--sl-border);
-  border-radius: var(--sl-radius-sm);
-  color: var(--sl-text-secondary);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sl-view-toggle:hover {
-  background: var(--sl-bg-hover);
-  color: var(--sl-text-primary);
-  transform: scale(1.05);
-}
-
-/* 加载状态 */
-.sl-card-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: var(--sl-space-sm);
-  min-height: 120px;
-  color: var(--sl-text-tertiary);
+  margin-bottom: var(--sl-space-md);
 }
 
-.sl-card-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--sl-border);
-  border-top-color: var(--sl-primary);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+.sl-card-title {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+  transition: color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+.sl-card-subtitle {
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 2px 0 0 0;
+}
+
+.sl-card-body {
+  flex: 1;
+}
+
+.sl-card-footer {
+  margin-top: var(--sl-space-md);
+  padding-top: var(--sl-space-md);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* ===== 暗色模式 Glass ===== */
+[data-theme="dark"] .sl-card--glass {
+  --sl-glass-bg: color-mix(in srgb, var(--md-sys-color-surface-container) 80%, transparent);
+  --sl-glass-border: color-mix(in srgb, var(--md-sys-color-outline-variant) 40%, transparent);
+}
+
+/* ===== 亚克力模式 ===== */
+[data-acrylic="true"] .sl-card--glass {
+  --sl-glass-bg: color-mix(in srgb, var(--md-sys-color-surface) 65%, transparent);
+  backdrop-filter: blur(var(--sl-blur-xl)) saturate(var(--sl-saturate-normal));
+  -webkit-backdrop-filter: blur(var(--sl-blur-xl)) saturate(var(--sl-saturate-normal));
+}
+
+[data-theme="dark"][data-acrylic="true"] .sl-card--glass {
+  --sl-glass-bg: color-mix(in srgb, var(--md-sys-color-surface-container) 65%, transparent);
+}
+
+[data-acrylic="false"] .sl-card--glass {
+  background: var(--md-sys-color-surface-container);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  will-change: auto;
+}
+
+/* 浏览器兼容性降级 */
+@supports not (backdrop-filter: blur(1px)) {
+  .sl-card--glass {
+    background: var(--md-sys-color-surface-container);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  [data-acrylic="true"] .sl-card--glass {
+    background: color-mix(in srgb, var(--md-sys-color-surface) 95%, transparent);
+  }
+
+  [data-theme="dark"][data-acrylic="true"] .sl-card--glass {
+    background: color-mix(in srgb, var(--md-sys-color-surface-container) 95%, transparent);
   }
 }
 
-/* 响应式适配 */
-@media (max-width: 768px) {
-  .sl-setting-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sl-space-sm);
+/* 低性能设备 */
+@media (prefers-reduced-motion: reduce) {
+  .sl-card--glass {
+    transition: none;
+    will-change: auto;
   }
 
-  .sl-input-sm,
-  .sl-input-md,
-  .sl-input-lg {
-    width: 100%;
-  }
-
-  .sl-slider-control {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .sl-server-card {
-    padding: var(--sl-space-md);
+  .sl-card--elevated.sl-card--hoverable:hover,
+  .sl-card--filled.sl-card--hoverable:hover,
+  .sl-card--outlined.sl-card--hoverable:hover,
+  .sl-card--glass.sl-card--hoverable:hover {
+    transform: none;
   }
 }

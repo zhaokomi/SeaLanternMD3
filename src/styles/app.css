@@ -3,12 +3,35 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font-family: var(--sl-font-sans);
 }
 
+/* MD3 全局排版默认值 */
+body {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: var(--md-sys-color-on-background);
+  background-color: var(--md-sys-color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Splash */
 .splash-fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
 }
 
 .splash-fade-leave-to {
   opacity: 0;
+}
+
+/* MD3 Selection color */
+::selection {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }

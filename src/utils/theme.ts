@@ -163,6 +163,28 @@ export function applyColors(settings: AppSettings): void {
   document.documentElement.style.setProperty("--sl-border", colors.border);
   document.documentElement.style.setProperty("--sl-border-light", colors.border);
 
+  // MD3 令牌派生
+  document.documentElement.style.setProperty("--md-sys-color-primary", colors.primary);
+  document.documentElement.style.setProperty("--md-sys-color-on-primary", isDark ? colors.bg : "#ffffff");
+  document.documentElement.style.setProperty("--md-sys-color-primary-container", rgbaFromHex(colors.primary, 0.12));
+  document.documentElement.style.setProperty("--md-sys-color-on-primary-container", colors.primary);
+  document.documentElement.style.setProperty("--md-sys-color-secondary", colors.secondary);
+  document.documentElement.style.setProperty("--md-sys-color-on-secondary", "#ffffff");
+  document.documentElement.style.setProperty("--md-sys-color-secondary-container", rgbaFromHex(colors.secondary, 0.12));
+  document.documentElement.style.setProperty("--md-sys-color-on-secondary-container", colors.secondary);
+  document.documentElement.style.setProperty("--md-sys-color-on-surface", colors.textPrimary);
+  document.documentElement.style.setProperty("--md-sys-color-on-surface-variant", colors.textSecondary);
+  document.documentElement.style.setProperty("--md-sys-color-outline", colors.border);
+  document.documentElement.style.setProperty("--md-sys-color-outline-variant", rgbaFromHex(colors.border, 0.5));
+  document.documentElement.style.setProperty("--md-sys-color-surface", surfaceColor);
+  document.documentElement.style.setProperty("--md-sys-color-surface-container-lowest", isDark ? adjustBrightness(colors.bg, -5) : "#ffffff");
+  document.documentElement.style.setProperty("--md-sys-color-surface-container-low", colors.bgSecondary);
+  document.documentElement.style.setProperty("--md-sys-color-surface-container", colors.bgTertiary);
+  document.documentElement.style.setProperty("--md-sys-color-surface-container-high", isDark ? adjustBrightness(colors.bgTertiary, 10) : adjustBrightness(colors.bgTertiary, -5));
+  document.documentElement.style.setProperty("--md-sys-color-surface-container-highest", isDark ? adjustBrightness(colors.bgTertiary, 15) : adjustBrightness(colors.bgTertiary, -10));
+  document.documentElement.style.setProperty("--md-sys-color-background", colors.bg);
+  document.documentElement.style.setProperty("--md-sys-color-on-background", colors.textPrimary);
+
   let surfaceColor: string;
   let surfaceHoverColor: string;
   if (isAcrylic) {

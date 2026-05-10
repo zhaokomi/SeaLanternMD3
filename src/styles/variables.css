@@ -1,54 +1,122 @@
+/* ============================================
+   Material Design 3 设计令牌
+   基于 MD3 颜色、排版、形状、阴影、动效规范
+   ============================================ */
+
 :root {
-  /* -- Primary Colors -- */
-  --sl-primary: #0ea5e9;
-  --sl-primary-light: #7dd3fc;
-  --sl-primary-dark: #0369a1;
-  --sl-primary-bg: rgba(14, 165, 233, 0.08);
+  /* ===== MD3 调色板 — Primary (蓝青色系) ===== */
+  --md-sys-color-primary: #006877;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #9eeffd;
+  --md-sys-color-on-primary-container: #001f25;
+  --md-sys-color-primary-fixed: #9eeffd;
+  --md-sys-color-on-primary-fixed: #001f25;
+  --md-sys-color-primary-fixed-dim: #82d3e0;
 
-  /* -- Accent -- */
-  --sl-accent: #06b6d4;
-  --sl-accent-light: #67e8f9;
+  /* ===== MD3 调色板 — Secondary (蓝灰色系) ===== */
+  --md-sys-color-secondary: #4b6268;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #cde7ed;
+  --md-sys-color-on-secondary-container: #061e23;
+  --md-sys-color-secondary-fixed: #cde7ed;
+  --md-sys-color-on-secondary-fixed: #061e23;
+  --md-sys-color-secondary-fixed-dim: #b2cbd1;
 
-  /* -- Neutral -- */
-  --sl-bg: #f8fafc;
-  --sl-bg-secondary: #f1f5f9;
-  --sl-bg-tertiary: #e2e8f0;
-  --sl-surface: #ffffff;
-  --sl-surface-hover: #f8fafc;
-  --sl-border: #e2e8f0;
-  --sl-border-light: #f1f5f9;
+  /* ===== MD3 调色板 — Tertiary (紫蓝色系) ===== */
+  --md-sys-color-tertiary: #565b7c;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #dcdfe9;
+  --md-sys-color-on-tertiary-container: #131835;
+  --md-sys-color-tertiary-fixed: #dcdfe9;
+  --md-sys-color-on-tertiary-fixed: #131835;
 
-  /* -- Text -- */
-  --sl-text-primary: #0f172a;
-  --sl-text-secondary: #475569;
-  --sl-text-tertiary: #94a3b8;
-  --sl-text-inverse: #ffffff;
+  /* ===== MD3 调色板 — Error ===== */
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
 
-  /* -- Status -- */
-  --sl-success: #22c55e;
-  --sl-success-bg: rgba(34, 197, 94, 0.1);
-  --sl-warning: #f59e0b;
-  --sl-warning-bg: rgba(245, 158, 11, 0.1);
-  --sl-error: #ef4444;
-  --sl-error-bg: rgba(239, 68, 68, 0.1);
-  --sl-info: #3b82f6;
-  --sl-info-bg: rgba(59, 130, 246, 0.1);
+  /* ===== MD3 调色板 — Neutral (灰色系) ===== */
+  --md-sys-color-surface: #f4fafb;
+  --md-sys-color-on-surface: #161d1e;
+  --md-sys-color-surface-variant: #dbe4e6;
+  --md-sys-color-on-surface-variant: #3f484a;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #eef4f5;
+  --md-sys-color-surface-container: #e8eff0;
+  --md-sys-color-surface-container-high: #e3e9ea;
+  --md-sys-color-surface-container-highest: #dde3e4;
+  --md-sys-color-outline: #6f797a;
+  --md-sys-color-outline-variant: #bfc8ca;
+  --md-sys-color-background: #f4fafb;
+  --md-sys-color-on-background: #161d1e;
+  --md-sys-color-inverse-surface: #2b3233;
+  --md-sys-color-inverse-on-surface: #ecf2f3;
+  --md-sys-color-inverse-primary: #82d3e0;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
 
-  /* -- Shadows -- */
-  --sl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --sl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --sl-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --sl-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+  /* ===== 向后兼容别名 ===== */
+  --sl-primary: var(--md-sys-color-primary);
+  --sl-primary-light: var(--md-sys-color-primary-fixed-dim);
+  --sl-primary-dark: color-mix(in srgb, var(--md-sys-color-primary) 70%, black);
+  --sl-primary-bg: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+  --sl-accent: var(--md-sys-color-secondary);
+  --sl-accent-light: var(--md-sys-color-secondary-fixed-dim);
 
-  /* -- Border Radius -- */
-  --sl-radius-xs: 4px;
-  --sl-radius-sm: 6px;
-  --sl-radius-md: 10px;
-  --sl-radius-lg: 16px;
-  --sl-radius-xl: 24px;
-  --sl-radius-full: 9999px;
+  --sl-bg: var(--md-sys-color-background);
+  --sl-bg-secondary: var(--md-sys-color-surface-container-low);
+  --sl-bg-tertiary: var(--md-sys-color-surface-container);
+  --sl-surface: var(--md-sys-color-surface);
+  --sl-surface-hover: var(--md-sys-color-surface-container-high);
+  --sl-border: var(--md-sys-color-outline-variant);
+  --sl-border-light: color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent);
 
-  /* -- Spacing -- */
+  --sl-text-primary: var(--md-sys-color-on-surface);
+  --sl-text-secondary: var(--md-sys-color-on-surface-variant);
+  --sl-text-tertiary: color-mix(in srgb, var(--md-sys-color-on-surface-variant) 70%, transparent);
+  --sl-text-inverse: var(--md-sys-color-on-primary);
+
+  --sl-success: #1b7a30;
+  --sl-success-bg: color-mix(in srgb, #1b7a30 10%, transparent);
+  --sl-warning: #ad5500;
+  --sl-warning-bg: color-mix(in srgb, #ad5500 10%, transparent);
+  --sl-error: var(--md-sys-color-error);
+  --sl-error-bg: color-mix(in srgb, var(--md-sys-color-error) 10%, transparent);
+  --sl-info: var(--md-sys-color-primary);
+  --sl-info-bg: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+
+  /* ===== MD3 Shape (圆角) ===== */
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* 向后兼容 */
+  --sl-radius-xs: var(--md-sys-shape-corner-extra-small);
+  --sl-radius-sm: var(--md-sys-shape-corner-small);
+  --sl-radius-md: var(--md-sys-shape-corner-medium);
+  --sl-radius-lg: var(--md-sys-shape-corner-large);
+  --sl-radius-xl: var(--md-sys-shape-corner-extra-large);
+  --sl-radius-full: var(--md-sys-shape-corner-full);
+
+  /* ===== MD3 Elevation (Tonal Surface) ===== */
+  --md-sys-elevation-level-0: none;
+  --md-sys-elevation-level-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-level-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-level-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-level-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-level-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+
+  /* 向后兼容 */
+  --sl-shadow-sm: var(--md-sys-elevation-level-1);
+  --sl-shadow-md: var(--md-sys-elevation-level-2);
+  --sl-shadow-lg: var(--md-sys-elevation-level-3);
+  --sl-shadow-xl: var(--md-sys-elevation-level-4);
+
+  /* ===== MD3 Spacing (8dp 网格) ===== */
   --sl-space-xs: 4px;
   --sl-space-sm: 8px;
   --sl-space-md: 16px;
@@ -56,43 +124,87 @@
   --sl-space-xl: 32px;
   --sl-space-2xl: 48px;
 
-  /* -- Typography -- */
-  --sl-font-sans: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --sl-font-mono: "JetBrains Mono", "Fira Code", monospace;
+  /* ===== MD3 Typography ===== */
+  --sl-font-sans: "Inter", "PingFang SC", "Microsoft YaHei", "Roboto", sans-serif;
+  --sl-font-mono: "JetBrains Mono", "Fira Code", "Roboto Mono", monospace;
   --sl-font-display: "Inter", "PingFang SC", sans-serif;
 
-  /* -- Font Sizes -- */
-  --sl-font-size-xs: 0.75rem;
-  --sl-font-size-sm: 0.8125rem;
-  --sl-font-size-base: 0.875rem;
-  --sl-font-size-lg: 1rem;
-  --sl-font-size-xl: 1.125rem;
-  --sl-font-size-2xl: 1.25rem;
-  --sl-font-size-3xl: 1.5rem;
-  --sl-font-size-4xl: 2rem;
+  /* MD3 Type Scale */
+  --md-sys-typescale-display-large-size: 57px;
+  --md-sys-typescale-display-large-line-height: 64px;
+  --md-sys-typescale-display-medium-size: 45px;
+  --md-sys-typescale-display-medium-line-height: 52px;
+  --md-sys-typescale-display-small-size: 36px;
+  --md-sys-typescale-display-small-line-height: 44px;
 
-  /* -- Line Heights -- */
+  --md-sys-typescale-headline-large-size: 32px;
+  --md-sys-typescale-headline-large-line-height: 40px;
+  --md-sys-typescale-headline-medium-size: 28px;
+  --md-sys-typescale-headline-medium-line-height: 36px;
+  --md-sys-typescale-headline-small-size: 24px;
+  --md-sys-typescale-headline-small-line-height: 32px;
+
+  --md-sys-typescale-title-large-size: 22px;
+  --md-sys-typescale-title-large-line-height: 28px;
+  --md-sys-typescale-title-medium-size: 16px;
+  --md-sys-typescale-title-medium-line-height: 24px;
+  --md-sys-typescale-title-small-size: 14px;
+  --md-sys-typescale-title-small-line-height: 20px;
+
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-large-line-height: 24px;
+  --md-sys-typescale-body-medium-size: 14px;
+  --md-sys-typescale-body-medium-line-height: 20px;
+  --md-sys-typescale-body-small-size: 12px;
+  --md-sys-typescale-body-small-line-height: 16px;
+
+  --md-sys-typescale-label-large-size: 14px;
+  --md-sys-typescale-label-large-line-height: 20px;
+  --md-sys-typescale-label-medium-size: 12px;
+  --md-sys-typescale-label-medium-line-height: 16px;
+  --md-sys-typescale-label-small-size: 11px;
+  --md-sys-typescale-label-small-line-height: 16px;
+
+  /* 向后兼容 */
+  --sl-font-size-xs: var(--md-sys-typescale-body-small-size);
+  --sl-font-size-sm: var(--md-sys-typescale-body-medium-size);
+  --sl-font-size-base: var(--md-sys-typescale-body-medium-size);
+  --sl-font-size-lg: var(--md-sys-typescale-body-large-size);
+  --sl-font-size-xl: var(--md-sys-typescale-title-small-size);
+  --sl-font-size-2xl: var(--md-sys-typescale-title-medium-size);
+  --sl-font-size-3xl: var(--md-sys-typescale-title-large-size);
+  --sl-font-size-4xl: var(--md-sys-typescale-headline-small-size);
+
   --sl-line-height-tight: 1.25;
   --sl-line-height-normal: 1.5;
   --sl-line-height-relaxed: 1.625;
 
-  /* -- Transitions -- */
-  --sl-transition-fast: 0.15s ease;
-  --sl-transition-normal: 0.25s ease;
-  --sl-transition-slow: 0.4s ease;
+  /* ===== MD3 Motion ===== */
+  --md-sys-motion-duration-short: 50ms;
+  --md-sys-motion-duration-medium: 200ms;
+  --md-sys-motion-duration-long: 300ms;
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-decelerated: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-accelerated: cubic-bezier(0.3, 0, 1, 1);
 
-  /* -- Layout -- */
+  /* 向后兼容 */
+  --sl-transition-fast: var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  --sl-transition-normal: var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+  --sl-transition-slow: var(--md-sys-motion-duration-long) var(--md-sys-motion-easing-standard);
+
+  /* ===== Layout ===== */
   --sl-sidebar-width: 220px;
   --sl-sidebar-collapsed-width: 60px;
   --sl-header-height: 48px;
 
-  /* -- Scrollbar -- */
+  /* ===== Scrollbar ===== */
   --sl-scrollbar-width: 2px;
   --sl-scrollbar-thumb-bg: var(--sl-border);
   --sl-scrollbar-thumb-hover-bg: var(--sl-text-tertiary);
   --sl-scrollbar-thumb-radius: var(--sl-radius-full);
 
-  /* -- Glass Blur -- */
+  /* ===== Glass Blur (保留) ===== */
   --sl-blur-sm: 8px;
   --sl-blur-md: 16px;
   --sl-blur-lg: 24px;
@@ -101,62 +213,123 @@
   --sl-saturate-subtle: 150%;
   --sl-saturate-normal: 180%;
   --sl-saturate-strong: 200%;
+
+  /* ===== MD3 Icon ===== */
+  --md-sys-icon-size-small: 18px;
+  --md-sys-icon-size-medium: 24px;
+  --md-sys-icon-size-large: 48px;
 }
 
+/* ===== 暗色模式 ===== */
 [data-theme="dark"] {
-  --sl-primary: #60a5fa;
-  --sl-primary-light: #93c5fd;
-  --sl-primary-dark: #3b82f6;
-  --sl-primary-bg: rgba(96, 165, 250, 0.12);
+  --md-sys-color-primary: #82d3e0;
+  --md-sys-color-on-primary: #00363e;
+  --md-sys-color-primary-container: #004e59;
+  --md-sys-color-on-primary-container: #9eeffd;
+  --md-sys-color-primary-fixed: #9eeffd;
+  --md-sys-color-on-primary-fixed: #001f25;
+  --md-sys-color-primary-fixed-dim: #82d3e0;
 
-  --sl-accent: #22d3ee;
-  --sl-accent-light: #67e8f9;
+  --md-sys-color-secondary: #b2cbd1;
+  --md-sys-color-on-secondary: #1d3439;
+  --md-sys-color-secondary-container: #334a50;
+  --md-sys-color-on-secondary-container: #cde7ed;
+  --md-sys-color-secondary-fixed: #cde7ed;
+  --md-sys-color-on-secondary-fixed: #061e23;
+  --md-sys-color-secondary-fixed-dim: #b2cbd1;
 
-  --sl-bg: #0f1117;
-  --sl-bg-secondary: #1a1d28;
-  --sl-bg-tertiary: #242836;
-  --sl-surface: #1e2130;
-  --sl-surface-hover: #282c3e;
-  --sl-border: rgba(255, 255, 255, 0.1);
-  --sl-border-light: rgba(255, 255, 255, 0.05);
+  --md-sys-color-tertiary: #c0c3cd;
+  --md-sys-color-on-tertiary: #282d4b;
+  --md-sys-color-tertiary-container: #3e4362;
+  --md-sys-color-on-tertiary-container: #dcdfe9;
+  --md-sys-color-tertiary-fixed: #dcdfe9;
+  --md-sys-color-on-tertiary-fixed: #131835;
 
-  --sl-text-primary: #e2e8f0;
-  --sl-text-secondary: #94a3b8;
-  --sl-text-tertiary: #64748b;
-  --sl-text-inverse: #0f172a;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffdad6;
 
-  --sl-success: #34d399;
-  --sl-success-bg: rgba(52, 211, 153, 0.12);
-  --sl-warning: #fbbf24;
-  --sl-warning-bg: rgba(251, 191, 36, 0.12);
-  --sl-error: #f87171;
-  --sl-error-bg: rgba(248, 113, 113, 0.12);
-  --sl-info: #60a5fa;
-  --sl-info-bg: rgba(96, 165, 250, 0.12);
+  --md-sys-color-surface: #0e1415;
+  --md-sys-color-on-surface: #dde3e4;
+  --md-sys-color-surface-variant: #3f484a;
+  --md-sys-color-on-surface-variant: #bfc8ca;
+  --md-sys-color-surface-container-lowest: #090f10;
+  --md-sys-color-surface-container-low: #161d1e;
+  --md-sys-color-surface-container: #1a2122;
+  --md-sys-color-surface-container-high: #242b2c;
+  --md-sys-color-surface-container-highest: #2f3637;
+  --md-sys-color-outline: #8a9294;
+  --md-sys-color-outline-variant: #3f484a;
+  --md-sys-color-background: #0e1415;
+  --md-sys-color-on-background: #dde3e4;
+  --md-sys-color-inverse-surface: #dde3e4;
+  --md-sys-color-inverse-on-surface: #2b3233;
+  --md-sys-color-inverse-primary: #006877;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
 
-  --sl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --sl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --sl-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --sl-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  /* 向后兼容 */
+  --sl-primary: var(--md-sys-color-primary);
+  --sl-primary-light: color-mix(in srgb, var(--md-sys-color-primary) 80%, white);
+  --sl-primary-dark: var(--md-sys-color-primary-container);
+  --sl-primary-bg: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+  --sl-accent: var(--md-sys-color-secondary);
+  --sl-accent-light: color-mix(in srgb, var(--md-sys-color-secondary) 80%, white);
+
+  --sl-bg: var(--md-sys-color-background);
+  --sl-bg-secondary: var(--md-sys-color-surface-container-low);
+  --sl-bg-tertiary: var(--md-sys-color-surface-container);
+  --sl-surface: var(--md-sys-color-surface-container);
+  --sl-surface-hover: var(--md-sys-color-surface-container-high);
+  --sl-border: var(--md-sys-color-outline-variant);
+  --sl-border-light: color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent);
+
+  --sl-text-primary: var(--md-sys-color-on-surface);
+  --sl-text-secondary: var(--md-sys-color-on-surface-variant);
+  --sl-text-tertiary: color-mix(in srgb, var(--md-sys-color-on-surface-variant) 60%, transparent);
+  --sl-text-inverse: var(--md-sys-color-on-primary);
+
+  --sl-success: #7ad88b;
+  --sl-success-bg: color-mix(in srgb, #7ad88b 12%, transparent);
+  --sl-warning: #ffb870;
+  --sl-warning-bg: color-mix(in srgb, #ffb870 12%, transparent);
+  --sl-error: var(--md-sys-color-error);
+  --sl-error-bg: color-mix(in srgb, var(--md-sys-color-error) 12%, transparent);
+  --sl-info: var(--md-sys-color-primary);
+  --sl-info-bg: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+
+  --sl-shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --sl-shadow-md: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --sl-shadow-lg: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  --sl-shadow-xl: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== 亚克力模式 (保留) ===== */
 [data-acrylic="true"] {
-  --sl-bg: rgba(248, 250, 252, 0.65);
-  --sl-bg-secondary: rgba(241, 245, 249, 0.55);
-  --sl-bg-tertiary: rgba(226, 232, 240, 0.45);
-  --sl-surface: rgba(255, 255, 255, 0.65);
-  --sl-surface-hover: rgba(248, 250, 252, 0.75);
+  --sl-bg: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
+  --sl-bg-secondary: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
+  --sl-bg-tertiary: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
+  --sl-surface: color-mix(in srgb, var(--md-sys-color-surface) 65%, transparent);
+  --sl-surface-hover: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
 }
 
 [data-theme="dark"][data-acrylic="true"] {
-  --sl-bg: rgba(15, 17, 23, 0.65);
-  --sl-bg-secondary: rgba(26, 29, 40, 0.55);
-  --sl-bg-tertiary: rgba(36, 40, 54, 0.45);
-  --sl-surface: rgba(30, 33, 48, 0.65);
-  --sl-surface-hover: rgba(40, 44, 62, 0.75);
+  --sl-bg: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
+  --sl-bg-secondary: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
+  --sl-bg-tertiary: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
+  --sl-surface: color-mix(in srgb, var(--md-sys-color-surface-container) 65%, transparent);
+  --sl-surface-hover: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
 }
 
-[data-minimal="true"] {
+  /* ===== 缺失变量补充 ===== */
+  --sl-border-hover: var(--md-sys-color-outline);
+  --sl-primary-alpha: color-mix(in srgb, var(--md-sys-color-primary) 40%, transparent);
+  --sl-bg-hover: var(--md-sys-color-surface-container-highest);
+  --sl-font-size-md: var(--md-sys-typescale-title-medium-size);
+
+  /* ===== 性能模式 ===== */
+  [data-minimal="true"] {
   --sl-transition-fast: 0s;
   --sl-transition-normal: 0s;
   --sl-transition-slow: 0s;

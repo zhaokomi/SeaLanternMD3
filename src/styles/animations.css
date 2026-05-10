@@ -1,107 +1,244 @@
-@keyframes sl-fade-in {
+/* ============================================
+   Material Design 3 Motion System
+   基于 MD3 动效规范和缓动函数
+   ============================================ */
+
+/* ===== MD3 标准缓动函数 ===== */
+.md-easing-standard {
+  transition-timing-function: var(--md-sys-motion-easing-standard);
+}
+
+.md-easing-emphasized {
+  transition-timing-function: var(--md-sys-motion-easing-emphasized);
+}
+
+.md-easing-decelerated {
+  transition-timing-function: var(--md-sys-motion-easing-decelerated);
+}
+
+.md-easing-accelerated {
+  transition-timing-function: var(--md-sys-motion-easing-accelerated);
+}
+
+/* ===== MD3 Duration 工具类 ===== */
+.md-duration-short {
+  transition-duration: var(--md-sys-motion-duration-short);
+}
+
+.md-duration-medium {
+  transition-duration: var(--md-sys-motion-duration-medium);
+}
+
+.md-duration-long {
+  transition-duration: var(--md-sys-motion-duration-long);
+}
+
+/* ===== MD3 容器变换动画 (Container Transform) ===== */
+@keyframes md-container-expand {
   from {
-    opacity: 0;
+    clip-path: inset(50% 50% 50% 50% round var(--md-sys-shape-corner-medium));
   }
   to {
-    opacity: 1;
+    clip-path: inset(0% 0% 0% 0% round 0);
   }
+}
+
+@keyframes md-container-collapse {
+  from {
+    clip-path: inset(0% 0% 0% 0% round 0);
+  }
+  to {
+    clip-path: inset(50% 50% 50% 50% round var(--md-sys-shape-corner-medium));
+  }
+}
+
+/* ===== 淡入淡出 ===== */
+@keyframes sl-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sl-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @keyframes sl-fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes sl-fade-in-down {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== 缩放 ===== */
 @keyframes sl-scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes sl-scale-in-center {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== 滑动 ===== */
 @keyframes sl-slide-in-left {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
 }
 
 @keyframes sl-slide-in-right {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
+@keyframes sl-slide-in-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes sl-slide-in-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* ===== 加载动画 ===== */
 @keyframes sl-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes sl-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
+@keyframes md-linear-indeterminate {
+  0% { left: -100%; right: 100%; }
+  50% { left: -20%; right: -20%; }
+  100% { left: 100%; right: -100%; }
+}
+
+@keyframes md-circular-indeterminate {
+  0% { stroke-dasharray: 1px, 200px; stroke-dashoffset: 0; }
+  50% { stroke-dasharray: 100px, 200px; stroke-dashoffset: -15px; }
+  100% { stroke-dasharray: 100px, 200px; stroke-dashoffset: -125px; }
+}
+
+@keyframes md-circular-rotate {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== MD3 涟漪效果 ===== */
+@keyframes md-ripple-press {
+  0% { transform: scale(0); opacity: 0.12; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes md-ripple-release {
+  0% { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+
+/* ===== 动画工具类 ===== */
 .animate-fade-in {
-  animation: sl-fade-in var(--sl-transition-normal) forwards;
+  animation: sl-fade-in var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated) forwards;
 }
 
 .animate-fade-in-up {
-  animation: sl-fade-in-up var(--sl-transition-normal) forwards;
+  animation: sl-fade-in-up var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated) forwards;
 }
 
 .animate-scale-in {
-  animation: sl-scale-in var(--sl-transition-normal) forwards;
+  animation: sl-scale-in var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized) forwards;
+}
+
+.animate-scale-in-center {
+  animation: sl-scale-in-center var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated) forwards;
 }
 
 .animate-spin {
-  animation: sl-spin 1s linear infinite;
+  animation: sl-spin 1.4s linear infinite;
 }
 
 .animate-pulse {
   animation: sl-pulse 2s ease-in-out infinite;
 }
 
+.animate-indeterminate-linear {
+  animation: md-linear-indeterminate 1.8s var(--md-sys-motion-easing-standard) infinite;
+}
+
+.animate-indeterminate-circular {
+  animation: md-circular-rotate 1.4s linear infinite;
+}
+
+/* ===== MD3 页面过渡 ===== */
+.md-page-enter-active {
+  animation: sl-fade-in-up var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated);
+}
+
+.md-page-leave-active {
+  animation: sl-fade-out var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-accelerated);
+}
+
+.md-dialog-enter-active {
+  animation: sl-scale-in var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-decelerated);
+}
+
+.md-dialog-leave-active {
+  animation: sl-fade-out var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-accelerated);
+}
+
+.md-menu-enter-active {
+  animation: sl-scale-in var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-decelerated);
+  transform-origin: top center;
+}
+
+.md-menu-leave-active {
+  animation: sl-fade-out var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-accelerated);
+}
+
+/* ===== 状态变化动画 ===== */
+.md-state-layer {
+  position: relative;
+  overflow: hidden;
+}
+
+.md-state-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-standard);
+  pointer-events: none;
+}
+
+.md-state-layer:hover::after {
+  opacity: 0.08;
+}
+
+.md-state-layer:focus-visible::after {
+  opacity: 0.12;
+}
+
+.md-state-layer:active::after {
+  opacity: 0.12;
+}
+
+/* 性能模式 */
 [data-minimal="true"] .animate-fade-in,
 [data-minimal="true"] .animate-fade-in-up,
 [data-minimal="true"] .animate-scale-in,
+[data-minimal="true"] .animate-scale-in-center,
 [data-minimal="true"] .animate-spin,
-[data-minimal="true"] .animate-pulse {
+[data-minimal="true"] .animate-pulse,
+[data-minimal="true"] .animate-indeterminate-linear,
+[data-minimal="true"] .animate-indeterminate-circular {
   animation: none !important;
 }
 
