@@ -5,62 +5,8 @@ on:
     tags:
       - "v*"
 
-permissions:
-  contents: write
-
 jobs:
-  build:
-    name: 编译并发布 (Windows)
-    runs-on: windows-latest
-
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
-
-      - name: 安装 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-
-      - name: 安装 Rust 工具链
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: 安装前端依赖并构建
-        run: |
-          npm install
-          npx vite build
-
-      - name: 编译 Rust (release)
-        run: cargo build --release
-        working-directory: src-tauri
-
-      - name: 准备发布文件
-        shell: bash
-        run: |
-          VERSION="${GITHUB_REF_NAME#v}"
-          EXE_SRC="src-tauri/target/release/sea-lantern.exe"
-          EXE_NAME="SeaLanternMD3-${VERSION}-windows.exe"
-          ZIP_NAME="SeaLanternMD3-${VERSION}-windows.zip"
-
-          cp "$EXE_SRC" "./${EXE_NAME}"
-
-          7z a "./${ZIP_NAME}" "./${EXE_NAME}" "./README.md" "./LICENSE"
-
-          echo "EXE_NAME=${EXE_NAME}" >> "$GITHUB_ENV"
-          echo "ZIP_NAME=${ZIP_NAME}" >> "$GITHUB_ENV"
-
-      - name: 创建 Release 并上传
-        uses: softprops/action-gh-release@v2
-        with:
-          name: "SeaLanternMD3 v${{ github.ref_name }}"
-          body: |
-            ## SeaLanternMD3 v${{ github.ref_name }}
-
-            自动构建发布。
-          files: |
-            ${{ env.EXE_NAME }}
-            ${{ env.ZIP_NAME }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "Hello from Actions!"
