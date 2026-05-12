@@ -22,18 +22,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
-      - name: 启用 pnpm (corepack)
-        run: corepack enable && corepack prepare pnpm@9.15.9 --activate
+      - run: corepack enable && corepack prepare pnpm@9.15.9 --activate
       - uses: dtolnay/rust-toolchain@stable
-      - name: 安装前端依赖并构建
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm run build
-      - name: 编译 Tauri 应用
-        run: pnpm tauri build --bundles none
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 准备发布文件
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - name: 编译 Tauri (正式方式)
+        run: pnpm tauri build
+      - name: 打包
         shell: bash
         run: |
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
