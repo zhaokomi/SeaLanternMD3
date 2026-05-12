@@ -4,7 +4,8 @@ import { Loader2 } from "lucide-vue-next";
 import { useRegisterComponent } from "@composables/useRegisterComponent";
 
 interface Props {
-  variant?: "primary" | "secondary" | "ghost" | "danger" | "success";
+  /** MD3 按钮变体: filled | filled-tonal | elevated | outlined | text */
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "success" | "filled" | "filled-tonal" | "elevated" | "outlined" | "text";
   size?: "sm" | "md" | "lg";
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -14,13 +15,30 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  variant: "primary",
+  variant: "filled",
   size: "md",
   type: "button",
   disabled: false,
   loading: false,
   iconOnly: false,
 });
+
+// 旧变体到新 MD3 变体的映射，保持向后兼容
+const variantMap: Record<string, string> = {
+  primary: "filled",
+  secondary: "filled-tonal",
+  ghost: "text",
+  danger: "filled",
+  success: "filled",
+  filled: "filled",
+  "filled-tonal": "filled-tonal",
+  elevated: "elevated",
+  outlined: "outlined",
+  text: "text",
+};
+
+const resolvedVariant = computed(() => variantMap[props.variant] || "filled");
+const isColorVariant = computed(() => ["danger", "success"].includes(props.variant));
 
 const elRef = ref<HTMLElement | null>(null);
 const id = props.componentId ?? `sl-button-${Math.random().toString(36).slice(2, 8)}`;
@@ -36,11 +54,14 @@ useRegisterComponent(id, {
 });
 
 const buttonClasses = computed(() => [
-  `sl-button--${props.variant}`,
+  `sl-button`,
+  `sl-button--${resolvedVariant.value}`,
   `sl-button--${props.size}`,
   {
     "sl-button--disabled": props.disabled || props.loading,
     "sl-button--icon-only": props.iconOnly,
+    "sl-button--danger": props.variant === "danger",
+    "sl-button--success": props.variant === "success",
   },
 ]);
 </script>

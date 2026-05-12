@@ -1,176 +1,244 @@
 /* ============================================
-   Typography System - 文字排版系统
-   分为：正文(text-body) 和 描述(text-desc)
+   Material Design 3 Typography System
+   基于 MD3 Type Scale 规范
    ============================================ */
 
-/* -- Headings -- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ===== MD3 Display (展示) ===== */
+.md-typescale-display-large {
   font-family: var(--sl-font-display);
-  font-weight: 600;
+  font-size: var(--md-sys-typescale-display-large-size);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+  font-weight: 400;
+  letter-spacing: -0.25px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-display-medium {
+  font-family: var(--sl-font-display);
+  font-size: var(--md-sys-typescale-display-medium-size);
+  line-height: var(--md-sys-typescale-display-medium-line-height);
+  font-weight: 400;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-display-small {
+  font-family: var(--sl-font-display);
+  font-size: var(--md-sys-typescale-display-small-size);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+  font-weight: 400;
+  color: var(--sl-text-primary);
+}
+
+/* ===== MD3 Headline (标题) ===== */
+.md-typescale-headline-large {
+  font-family: var(--sl-font-display);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+  font-weight: 400;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-headline-medium {
+  font-family: var(--sl-font-display);
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+  font-weight: 400;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-headline-small {
+  font-family: var(--sl-font-display);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  line-height: var(--md-sys-typescale-headline-small-line-height);
+  font-weight: 400;
+  color: var(--sl-text-primary);
+}
+
+/* ===== MD3 Title (小标题) ===== */
+.md-typescale-title-large {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-title-large-size);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  font-weight: 500;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-title-medium {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-title-small {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-title-small-size);
+  line-height: var(--md-sys-typescale-title-small-line-height);
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--sl-text-primary);
+}
+
+/* ===== MD3 Body (正文) ===== */
+.md-typescale-body-large {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-body-medium {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-body-small {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: var(--sl-text-primary);
+}
+
+/* ===== MD3 Label (标签) ===== */
+.md-typescale-label-large {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-label-large-size);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-label-medium {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--sl-text-primary);
+}
+
+.md-typescale-label-small {
+  font-family: var(--sl-font-sans);
+  font-size: var(--md-sys-typescale-label-small-size);
+  line-height: var(--md-sys-typescale-label-small-line-height);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--sl-text-primary);
+}
+
+/* ===== Headings (向后兼容 + MD3 规范) ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sl-font-display);
+  font-weight: 400;
   line-height: var(--sl-line-height-tight);
   color: var(--sl-text-primary);
 }
 
-h1 {
-  font-size: var(--sl-font-size-4xl);
-}
+h1 { font-size: var(--md-sys-typescale-headline-large-size); line-height: var(--md-sys-typescale-headline-large-line-height); }
+h2 { font-size: var(--md-sys-typescale-headline-medium-size); line-height: var(--md-sys-typescale-headline-medium-line-height); }
+h3 { font-size: var(--md-sys-typescale-headline-small-size); line-height: var(--md-sys-typescale-headline-small-line-height); }
+h4 { font-size: var(--md-sys-typescale-title-large-size); line-height: var(--md-sys-typescale-title-large-line-height); font-weight: 500; }
+h5 { font-size: var(--md-sys-typescale-title-medium-size); line-height: var(--md-sys-typescale-title-medium-line-height); font-weight: 500; }
+h6 { font-size: var(--md-sys-typescale-title-small-size); line-height: var(--md-sys-typescale-title-small-line-height); font-weight: 500; }
 
-h2 {
-  font-size: var(--sl-font-size-3xl);
-}
-
-h3 {
-  font-size: var(--sl-font-size-2xl);
-}
-
-h4 {
-  font-size: var(--sl-font-size-xl);
-}
-
-h5 {
-  font-size: var(--sl-font-size-lg);
-}
-
-h6 {
-  font-size: var(--sl-font-size-base);
-}
-
-/* -- 正文样式 (Body Text) -- */
+/* ===== 向后兼容工具类 ===== */
 .text-body {
-  font-size: var(--sl-font-size-base);
-  line-height: var(--sl-line-height-normal);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  font-weight: 400;
   color: var(--sl-text-primary);
 }
 
 .text-body-sm {
-  font-size: var(--sl-font-size-sm);
-  line-height: var(--sl-line-height-normal);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
+  font-weight: 400;
   color: var(--sl-text-primary);
 }
 
 .text-body-lg {
-  font-size: var(--sl-font-size-lg);
-  line-height: var(--sl-line-height-relaxed);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  font-weight: 400;
   color: var(--sl-text-primary);
 }
 
-/* -- 描述样式 (Description Text) -- */
 .text-desc {
-  font-size: var(--sl-font-size-sm);
-  line-height: var(--sl-line-height-normal);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
   color: var(--sl-text-secondary);
 }
 
 .text-desc-sm {
-  font-size: var(--sl-font-size-xs);
-  line-height: var(--sl-line-height-normal);
+  font-size: var(--md-sys-typescale-body-small-size);
+  line-height: var(--md-sys-typescale-body-small-line-height);
   color: var(--sl-text-tertiary);
 }
 
-/* -- 标题样式 -- */
 .text-heading {
   font-family: var(--sl-font-display);
-  font-weight: 600;
+  font-weight: 400;
   line-height: var(--sl-line-height-tight);
   color: var(--sl-text-primary);
 }
 
-.text-heading-xl {
-  font-size: var(--sl-font-size-4xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
+.text-heading-xl { font-size: var(--md-sys-typescale-headline-large-size); font-weight: 700; letter-spacing: -0.02em; }
+.text-heading-lg { font-size: var(--md-sys-typescale-headline-medium-size); }
+.text-heading-md { font-size: var(--md-sys-typescale-headline-small-size); }
+.text-heading-sm { font-size: var(--md-sys-typescale-title-large-size); font-weight: 500; }
 
-.text-heading-lg {
-  font-size: var(--sl-font-size-3xl);
-}
-
-.text-heading-md {
-  font-size: var(--sl-font-size-2xl);
-}
-
-.text-heading-sm {
-  font-size: var(--sl-font-size-xl);
-}
-
-/* -- 标签/徽章样式 -- */
 .text-label {
-  font-size: var(--sl-font-size-xs);
+  font-size: var(--md-sys-typescale-label-medium-size);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
   font-weight: 500;
-  line-height: var(--sl-line-height-tight);
+  letter-spacing: 0.5px;
   color: var(--sl-text-secondary);
 }
 
-/* -- 等宽字体 -- */
 .text-mono {
   font-family: var(--sl-font-mono);
-  font-size: var(--sl-font-size-base);
+  font-size: var(--md-sys-typescale-body-medium-size);
 }
 
 .text-mono-sm {
   font-family: var(--sl-font-mono);
-  font-size: var(--sl-font-size-sm);
+  font-size: var(--md-sys-typescale-body-small-size);
 }
 
-/* -- 颜色工具类 -- */
-.text-primary {
-  color: var(--sl-text-primary);
-}
+/* 颜色工具类 */
+.text-primary { color: var(--sl-text-primary); }
+.text-secondary { color: var(--sl-text-secondary); }
+.text-tertiary { color: var(--sl-text-tertiary); }
+.text-accent { color: var(--sl-primary); }
+.text-success { color: var(--sl-success); }
+.text-warning { color: var(--sl-warning); }
+.text-error { color: var(--sl-error); }
 
-.text-secondary {
-  color: var(--sl-text-secondary);
-}
+/* 字重工具类 */
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
 
-.text-tertiary {
-  color: var(--sl-text-tertiary);
-}
-
-.text-accent {
-  color: var(--sl-primary);
-}
-
-.text-success {
-  color: var(--sl-success);
-}
-
-.text-warning {
-  color: var(--sl-warning);
-}
-
-.text-error {
-  color: var(--sl-error);
-}
-
-/* -- 字重工具类 -- */
-.font-normal {
-  font-weight: 400;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-/* -- 已废弃：保留向后兼容 -- */
+/* 已废弃：保留向后兼容 */
 .text-display {
-  font-size: var(--sl-font-size-4xl);
+  font-size: var(--md-sys-typescale-display-small-size);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .text-caption {
-  font-size: var(--sl-font-size-sm);
+  font-size: var(--md-sys-typescale-body-small-size);
   color: var(--sl-text-tertiary);
 }
