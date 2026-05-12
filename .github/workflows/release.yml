@@ -29,8 +29,8 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm run build
-      - name: 编译 Tauri 应用 (正式构建方式)
-        run: cargo tauri build --bundles none
+      - name: 编译 Tauri 应用
+        run: pnpm tauri build --bundles none
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 准备发布文件
