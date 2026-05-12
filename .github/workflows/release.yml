@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag (e.g. v1.2.2)"
+        description: "Release tag (e.g. v1.2.3)"
         required: true
-        default: "v1.2.2"
+        default: "v1.2.3"
   push:
     tags:
       - "v*"
@@ -22,19 +22,25 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
+      - name: 启用 pnpm (corepack)
+        run: corepack enable && corepack prepare pnpm@9.15.9 --activate
       - uses: dtolnay/rust-toolchain@stable
-      - run: npm install
-      - run: npx vite build
-      - run: cargo build --release
-        working-directory: src-tauri
-      - name: 打包
+      - name: 安装前端依赖并构建
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+      - name: 编译 Tauri 应用 (正式构建方式)
+        run: cargo tauri build --bundles none
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 准备发布文件
         shell: bash
         run: |
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
           VERSION="${TAG#v}"
           EXE_NAME="SeaLanternMD3-${VERSION}-windows.exe"
           ZIP_NAME="SeaLanternMD3-${VERSION}-windows.zip"
-          cp "target/release/sea-lantern.exe" "./${EXE_NAME}"
+          cp "src-tauri/target/release/sea-lantern.exe" "./${EXE_NAME}"
           7z a "./${ZIP_NAME}" "./${EXE_NAME}" ./README.md ./LICENSE
           echo "EXE_NAME=${EXE_NAME}" >> "$GITHUB_ENV"
           echo "ZIP_NAME=${ZIP_NAME}" >> "$GITHUB_ENV"
