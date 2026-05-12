@@ -331,7 +331,7 @@
 }
 
 /* ===== 性能模式 ===== */
-  [data-minimal="true"] {
+[data-minimal="true"] {
   --sl-transition-fast: 0s;
   --sl-transition-normal: 0s;
   --sl-transition-slow: 0s;

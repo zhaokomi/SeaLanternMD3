@@ -163,6 +163,21 @@ export function applyColors(settings: AppSettings): void {
   document.documentElement.style.setProperty("--sl-border", colors.border);
   document.documentElement.style.setProperty("--sl-border-light", colors.border);
 
+  let surfaceColor: string;
+  let surfaceHoverColor: string;
+  if (isAcrylic) {
+    if (isDark) {
+      surfaceColor = "rgba(30, 33, 48, 0.65)";
+      surfaceHoverColor = "rgba(40, 44, 62, 0.75)";
+    } else {
+      surfaceColor = "rgba(255, 255, 255, 0.65)";
+      surfaceHoverColor = "rgba(248, 250, 252, 0.75)";
+    }
+  } else {
+    surfaceColor = isDark ? colors.bgSecondary : "#ffffff";
+    surfaceHoverColor = isDark ? colors.bgTertiary : colors.bg;
+  }
+
   // MD3 令牌派生
   document.documentElement.style.setProperty("--md-sys-color-primary", colors.primary);
   document.documentElement.style.setProperty("--md-sys-color-on-primary", isDark ? colors.bg : "#ffffff");
@@ -185,20 +200,6 @@ export function applyColors(settings: AppSettings): void {
   document.documentElement.style.setProperty("--md-sys-color-background", colors.bg);
   document.documentElement.style.setProperty("--md-sys-color-on-background", colors.textPrimary);
 
-  let surfaceColor: string;
-  let surfaceHoverColor: string;
-  if (isAcrylic) {
-    if (isDark) {
-      surfaceColor = "rgba(30, 33, 48, 0.65)";
-      surfaceHoverColor = "rgba(40, 44, 62, 0.75)";
-    } else {
-      surfaceColor = "rgba(255, 255, 255, 0.65)";
-      surfaceHoverColor = "rgba(248, 250, 252, 0.75)";
-    }
-  } else {
-    surfaceColor = isDark ? colors.bgSecondary : "#ffffff";
-    surfaceHoverColor = isDark ? colors.bgTertiary : colors.bg;
-  }
   document.documentElement.style.setProperty("--sl-surface", surfaceColor);
   document.documentElement.style.setProperty("--sl-surface-hover", surfaceHoverColor);
 
