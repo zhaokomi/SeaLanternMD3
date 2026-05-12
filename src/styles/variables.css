@@ -322,13 +322,15 @@
   --sl-surface-hover: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
 }
 
-  /* ===== 缺失变量补充 ===== */
+/* ===== 缺失变量补充 ===== */
+:root {
   --sl-border-hover: var(--md-sys-color-outline);
   --sl-primary-alpha: color-mix(in srgb, var(--md-sys-color-primary) 40%, transparent);
   --sl-bg-hover: var(--md-sys-color-surface-container-highest);
   --sl-font-size-md: var(--md-sys-typescale-title-medium-size);
+}
 
-  /* ===== 性能模式 ===== */
+/* ===== 性能模式 ===== */
   [data-minimal="true"] {
   --sl-transition-fast: 0s;
   --sl-transition-normal: 0s;
