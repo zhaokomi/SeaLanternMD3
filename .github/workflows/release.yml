@@ -28,14 +28,20 @@ jobs:
       - run: pnpm run build
       - name: 编译 Tauri (正式方式)
         run: pnpm tauri build
-      - name: 打包
+      - name: 查找并打包
         shell: bash
         run: |
           TAG="${{ github.event.inputs.tag || github.ref_name }}"
           VERSION="${TAG#v}"
           EXE_NAME="SeaLanternMD3-${VERSION}-windows.exe"
           ZIP_NAME="SeaLanternMD3-${VERSION}-windows.zip"
-          cp "src-tauri/target/release/sea-lantern.exe" "./${EXE_NAME}"
+          # 查找构建出来的 exe
+          EXE=$(find . -name "sea-lantern.exe" -path "*/release/*" 2>/dev/null | head -1)
+          if [ -z "$EXE" ]; then
+            echo "❌ 找不到 sea-lantern.exe" && exit 1
+          fi
+          echo "✅ 找到: $EXE"
+          cp "$EXE" "./${EXE_NAME}"
           7z a "./${ZIP_NAME}" "./${EXE_NAME}" ./README.md ./LICENSE
           echo "EXE_NAME=${EXE_NAME}" >> "$GITHUB_ENV"
           echo "ZIP_NAME=${ZIP_NAME}" >> "$GITHUB_ENV"
