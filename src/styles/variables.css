@@ -305,21 +305,37 @@
   --sl-shadow-xl: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== 亚克力模式 (保留) ===== */
+/* ===== 亚克力模式 ===== */
 [data-acrylic="true"] {
+  /* 向后兼容 */
   --sl-bg: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
   --sl-bg-secondary: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
   --sl-bg-tertiary: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
   --sl-surface: color-mix(in srgb, var(--md-sys-color-surface) 65%, transparent);
   --sl-surface-hover: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
+  /* MD3 令牌 (亚克力模式需要透明) */
+  --md-sys-color-background: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
+  --md-sys-color-surface: color-mix(in srgb, var(--md-sys-color-surface) 65%, transparent);
+  --md-sys-color-surface-container-low: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
+  --md-sys-color-surface-container: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
+  --md-sys-color-surface-container-high: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
+  --md-sys-color-surface-container-highest: color-mix(in srgb, var(--md-sys-color-surface-container-highest) 75%, transparent);
 }
 
 [data-theme="dark"][data-acrylic="true"] {
+  /* 向后兼容 */
   --sl-bg: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
   --sl-bg-secondary: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
   --sl-bg-tertiary: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
   --sl-surface: color-mix(in srgb, var(--md-sys-color-surface-container) 65%, transparent);
   --sl-surface-hover: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
+  /* MD3 令牌 (暗色亚克力模式需要透明) */
+  --md-sys-color-background: color-mix(in srgb, var(--md-sys-color-background) 65%, transparent);
+  --md-sys-color-surface: color-mix(in srgb, var(--md-sys-color-surface-container) 65%, transparent);
+  --md-sys-color-surface-container-low: color-mix(in srgb, var(--md-sys-color-surface-container-low) 55%, transparent);
+  --md-sys-color-surface-container: color-mix(in srgb, var(--md-sys-color-surface-container) 45%, transparent);
+  --md-sys-color-surface-container-high: color-mix(in srgb, var(--md-sys-color-surface-container-high) 75%, transparent);
+  --md-sys-color-surface-container-highest: color-mix(in srgb, var(--md-sys-color-surface-container-highest) 75%, transparent);
 }
 
 /* ===== 缺失变量补充 ===== */
